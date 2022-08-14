@@ -1,0 +1,25 @@
+# EXAMPLE USAGE
+# Refer for explanation to following link:
+# https://github.com/evilmartians/lefthook/blob/master/docs/full_guide.md
+#
+pre-push:
+  commands:
+    packages-audit:
+      tags: frontend security
+      run: yarn audit
+
+prepare-commit:
+  parallel: true
+  commands:
+    lint:
+      run: yarn lint
+    format:
+      run: yarn format
+
+pre-commit:
+  parallel: true
+  commands:
+    lint:
+      run: yarn lint
+    format:
+      run: yarn format
